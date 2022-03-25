@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "251877119374",
+    "project_id": "kobe-581d2",
+    "storage_bucket": "kobe-581d2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:251877119374:android:30b98f8fac4b0d1a3a80df",
+        "android_client_info": {
+          "package_name": "com.kwilax.kobe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "251877119374-1k761jk56scm6ps3dr9fnecia10ku7cu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXBklAo9KurpbhYSFPVNwB8AyNTtfx7sc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "251877119374-1k761jk56scm6ps3dr9fnecia10ku7cu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
