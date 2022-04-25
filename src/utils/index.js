@@ -9,15 +9,19 @@ export const useGetUser = () => {
     user: {email, displayName, photoURL},
   } = useAppContext();
 
-  const {isLoading, error, data} = useQuery('user', () =>
-    axios.get(`${baseUrl}/user/${email}/${displayName}/${photoURL}`),
+  const {isLoading, error, data} = useQuery(
+    'user',
+    () => axios.get(`${baseUrl}/user/${email}/${displayName}/${photoURL}`),
+    {staleTime: 5000},
   );
   return {isLoading, error, data: data?.data};
 };
 
 export const useGetKobe = () => {
-  const {isLoading, error, data} = useQuery('kobe', () =>
-    axios.get(`${baseUrl}/kobe`),
+  const {isLoading, error, data} = useQuery(
+    'kobe',
+    () => axios.get(`${baseUrl}/kobe`),
+    {staleTime: 5000},
   );
   return {isLoading, error, data: data?.data};
 };
@@ -58,4 +62,4 @@ export const useUpdateTask = () => {
 
 export const gradeUser = n =>
   n + ['st', 'nd', 'rd'][(((((n < 0 ? -n : n) + 90) % 100) - 10) % 10) - 1] ||
-  'th';
+  n + 'th';

@@ -8,19 +8,13 @@ import {
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import Entypo from 'react-native-vector-icons/Entypo';
-import dayjs from 'dayjs';
-import {useUpdateTask} from '../utils'
+import {useUpdateTask} from '../utils';
 
 const windowWidth = Dimensions.get('window').width;
 
 const TaskCard = ({taskData}) => {
-  const {name, score, id, lastUpdated} = taskData;
+  const {name, score, id, updatedToday} = taskData;
   const {mutate} = useUpdateTask();
-
-  // score / since
-  const taskDuration = dayjs().diff(lastUpdated, 'day') + 1;
-  const taskScore = lastUpdated ? (score / taskDuration).toFixed(2) : '-.--';
-  const updatedToday = lastUpdated && dayjs().diff(lastUpdated, 'day') === 0 ? true : false;
 
   const updateScore = () => {
     if (updatedToday) {
@@ -34,7 +28,7 @@ const TaskCard = ({taskData}) => {
       <View style={Style.cardInfo}>
         <Text style={Style.textTask}>{name}</Text>
         <View style={Style.cardInfoInner}>
-          <Text style={Style.textKobe}>{taskScore}</Text>
+          <Text style={Style.textKobe}>{score}</Text>
           <Entypo name="star" color="#FFA828" size={36} />
         </View>
       </View>

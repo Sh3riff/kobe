@@ -7,49 +7,17 @@ import {
   Text,
   ScrollView,
 } from 'react-native';
+import Loader from '../components/loader';
 import TaskCard from '../components/taskCard';
 import AddTask from '../components/addTask';
 import {useGetUser, useGetKobe} from '../utils';
-
-const ud = {
-  __v: 0,
-  _id: '623d6cbdf6d118bb53c0d03e',
-  dateCreated: '2022-03-25T07:18:21.519Z',
-  displayName: 'Sheriff Olowolagba',
-  email: 'sh3riff101@gmail.com',
-  photoURL: '',
-  tasks: [
-    {
-      dateCreated: 1648194150604,
-      id: 'd07b7f57-5e3d-4145-ac6c-5fd70b32be43',
-      lastUpdated: 1648200577482,
-      name: 'taskOne',
-      score: 5,
-    },
-    {
-      dateCreated: 1648194169381,
-      id: 'a9469e59-f7df-4887-bd51-ab960fd6bd6b',
-      lastUpdated: 1648200618238,
-      name: 'taskTwo',
-      score: 5,
-    },
-  ],
-};
-const kb = {
-  email: 'sh3riff101@gmail.com',
-  id: '623d6cbdf6d118bb53c0d03e',
-  kobeScore: '5.00',
-  name: 'Sheriff',
-  photoURL: '',
-  position: 1,
-};
 
 const Rank = () => {
   const {isLoading, error, data: userData} = useGetUser();
   const {isLoading: L1, error: E1, data: kobeData} = useGetKobe();
 
   if (isLoading || L1 || error || E1 || !userData || !kobeData) {
-    return null;
+    return <Loader />;
   }
 
   const email = userData?.email;
@@ -63,9 +31,6 @@ const Rank = () => {
       ? 'consistent'
       : 'inconsistent';
 
-  // console.log(userKobeData)
-
-  // console.log(userData);
   return (
     <SafeAreaView style={{flex: 1}}>
       <StatusBar barStyle="dark-content" backgroundColor="white" />

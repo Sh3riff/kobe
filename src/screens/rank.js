@@ -10,6 +10,7 @@ import {
 import dayjs from 'dayjs';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {useGetKobe} from '../utils';
+import Loader from '../components/loader';
 import RankCard from '../components/rankCard';
 import RankDivider from '../components/rankDivider';
 
@@ -17,13 +18,12 @@ const Rank = () => {
   const {isLoading, error, data: kobeData} = useGetKobe();
 
   if (isLoading || error || !kobeData) {
-    return null;
+    return <Loader />;
   }
-  console.log(kobeData);
   const superConsistent = kobeData.filter(user => user.kobeScore >= 4.5);
-  const consistent = kobeData.filter(
-    user => user.kobeScore >= 4.0 && user.KobeScore < 4.5,
-  );
+  const consistent = kobeData
+    .filter(user => user.kobeScore < 4.5)
+    .filter(user => user.kobeScore >= 4.0);
   const inConsistent = kobeData.filter(user => user.kobeScore < 4.0);
   return (
     <SafeAreaView style={{flex: 1}}>

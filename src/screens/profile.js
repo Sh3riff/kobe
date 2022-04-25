@@ -12,6 +12,7 @@ import Auth from 'react-native-firebaseui-auth';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Button from '../components/button';
+import Loader from '../components/loader';
 import {useAppContext} from '../../App';
 import {useGetUser, useGetKobe, gradeUser} from '../utils';
 
@@ -21,7 +22,7 @@ const Profile = () => {
   const {isLoading: L1, error: E1, data: kobeData} = useGetKobe();
 
   if (isLoading || L1 || error || E1 || !userData || !kobeData) {
-    return null;
+    return <Loader />;
   }
 
   const displayName = userData?.displayName;
