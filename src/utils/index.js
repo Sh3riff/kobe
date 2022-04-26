@@ -42,13 +42,12 @@ export const useCreateTask = () => {
   );
   return {mutate};
 };
-
 export const useUpdateTask = () => {
   const {
     user: {email},
   } = useAppContext();
   const queryclient = useQueryClient();
-  const {mutate} = useMutation(
+  const {mutate, error} = useMutation(
     taskId => axios.put(`${baseUrl}/task`, {email, taskId}),
     {
       onSuccess: () => {
@@ -57,6 +56,7 @@ export const useUpdateTask = () => {
       },
     },
   );
+
   return {mutate};
 };
 
